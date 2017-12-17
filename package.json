@@ -1,5 +1,5 @@
 {
-  "name": "simple-events",
+  "name": "easy-events",
   "version": "0.1.0",
   "description": "Simple evented systems.",
   "main": "dist/index.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/innectic/simple-events.git"
+    "url": "git+https://github.com/innectic/easy-events.git"
   },
   "author": "Innectic",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/innectic/simple-events/issues"
+    "url": "https://github.com/innectic/easy-events/issues"
   },
-  "homepage": "https://github.com/innectic/simple-events#readme",
+  "homepage": "https://github.com/innectic/easy-events#readme",
   "devDependencies": {
     "@angular/core": "^5.1.1",
     "@types/node": "^8.0.47",
