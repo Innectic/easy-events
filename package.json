@@ -1,0 +1,33 @@
+{
+  "name": "simple-events",
+  "version": "0.1.0",
+  "description": "Simple evented systems.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/innectic/simple-events.git"
+  },
+  "author": "Innectic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/innectic/simple-events/issues"
+  },
+  "homepage": "https://github.com/innectic/simple-events#readme",
+  "devDependencies": {
+    "@types/node": "^8.0.47",
+    "typescript": "^2.5.3"
+  },
+  "keywords": [
+    "events",
+    "evented"
+  ]
+}
