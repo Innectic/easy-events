@@ -1,5 +1,4 @@
 
-import "reflect-metadata";
 import { reflectAnnotations, createAnnotationFactory, setAnnotations } from "reflect-annotations";
 
 import { HANDLERS } from "./registry";
