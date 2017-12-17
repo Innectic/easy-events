@@ -2,6 +2,8 @@
 import "reflect-metadata";
 import { reflectAnnotations, createAnnotationFactory, setAnnotations } from "reflect-annotations";
 
+import { HANDLERS } from "./registry";
+
 export const HANDLED_EVENT_METADATA_KEY = "handler:event:handled";
 export let injectableHandlers: any[] = [];
 
@@ -63,6 +65,7 @@ export function EventController(injects?: boolean) {
 					}
 
 					Reflect.defineMetadata(HANDLED_EVENT_METADATA_KEY, events, target);
+					HANDLERS.push(target);
 				}
 			}
 		}
