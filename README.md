@@ -7,7 +7,7 @@ Creating evented systems shouldn't be hard, and it shouldn't involve EventEmitte
 
 ```typescript
 
-import { EventDispatch, Event, EventController } from "easy-events";
+import { getDispatch, Event, EventController } from "easy-events";
 
 @EventController()
 class EventTest {
@@ -21,8 +21,7 @@ class EventTest {
 export class Core {
 
 	public async start() {
-		const dispatch = new EventDispatch();
-		await dispatch.setup();
+		const dispatch = getDispatch();
 		await dispatch.emit("cool_event", "Woah, my event is so cool!");
 	}
 }
