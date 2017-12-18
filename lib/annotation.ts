@@ -25,7 +25,7 @@ export function EventController(injects?: boolean) {
 				// Since this is an event annotation, then we can actually deal with it.
 				// First, make sure we have the handler's name.
 				if (!decorator.eventName) {
-					console.error(`Cannot register a handler without a name! Error on: '${component.name}`);
+					console.error(`[Annotation Processor] Cannot register a handler without a name! Error on: '${component.name}`);
 					continue;
 				}
 				// We have the name, so figure out how many names we have.
@@ -34,12 +34,12 @@ export function EventController(injects?: boolean) {
 					// We now know what event(s) this function is handling.
 					const handler = target.prototype[component.name];
 					if (!handler) {
-						console.error(`Unable to get the name of the function that was already annotated?!?!?!?! ${component.name}`);
+						console.error(`[Annotation Processor] Unable to get the name of the function that was already annotated?!?!?!?! ${component.name}`);
 						continue;
 					}
 					// Make sure this handler function doesn't have multiple annotations.
 					if (Reflect.hasOwnMetadata(HANDLED_EVENT_METADATA_KEY, handler)) {
-						console.error(`Cannot redefine the handled event for handler function '${component.name}'.`);
+						console.error(`[Annotation Processor] Cannot redefine the handled event for handler function '${component.name}'.`);
 						continue;
 					}
 					// Since it doesn't we define the event, and the metadata.

@@ -11,11 +11,16 @@ interface RegisteredHandlers {
 
 export class EventDispatch {
 	private registered: RegisteredHandlers = {};
+	private isSetup: boolean = false;
 
 	public async setup(handlers: any[] = HANDLERS) {
+		if (this.isSetup) {
+			console.error("[Dispatcher] Cannot setup a setup dispatcher.");
+			return;
+		}
 		for (let handler of handlers) {
 			if (!Reflect.hasMetadata(HANDLED_EVENT_METADATA_KEY, handler)) {
-				console.error("Cannot register a handler that has no metadata.");
+				console.error("[Dispatcher] Cannot register a handler that has no metadata.");
 				continue;
 			}
 			// Valid handler, so lets handle the handler! :tm:
@@ -29,6 +34,10 @@ export class EventDispatch {
 	}
 
 	public async emit(event: string, data: any) {
+		if (!this.isSetup) {
+			console.error("[Dispatcher] Cannot emit without setting up.");
+			return;
+		}
 		const handlers = this.registered[event];
 		if (!handlers) {
 			return;
