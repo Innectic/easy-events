@@ -16,12 +16,17 @@ class EventTest {
 	public async eventTest(data: string) {
 		console.log(`Got a really cool event! ${data}`);
 	}
+
+	@Event("cool_event", EventPriority.FIRST)
+	public async anotherTest(data: string) {
+		console.log(`I'm first! ${data}`);
+	}
 }
 
 export class Core {
 
 	public async start() {
-		const dispatch = getDispatch();
+		const dispatch = await getDispatch();
 		await dispatch.emit("cool_event", "Woah, my event is so cool!");
 	}
 }

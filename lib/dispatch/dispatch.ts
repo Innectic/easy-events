@@ -4,8 +4,9 @@ import { HANDLED_EVENT_METADATA_KEY } from "../annotation";
 
 interface RegisteredHandlers {
 	[event: string]: {
-		handler: Function,
-		owner: Function
+		handler: Function;
+		owner: Function;
+		priority: number;
 	}[];
 }
 
@@ -27,7 +28,11 @@ export class EventDispatch {
 			const events = Reflect.getOwnMetadata(HANDLED_EVENT_METADATA_KEY, handler);
 			for (let event of events) {
 				const current = this.registered[event.name] || [];
-				current.push({ handler: event.handler, owner: event.owner });
+				current.push({
+					handler: event.handler,
+					owner: event.owner,
+					priority: event.priority
+				});
 				this.registered[event.name] = current;
 			}
 		}
@@ -39,11 +44,10 @@ export class EventDispatch {
 			console.error("[Dispatcher] Cannot emit without setting up.");
 			return;
 		}
-		const handlers = this.registered[event];
-		if (!handlers) {
-			return;
-		}
-		handlers.forEach(async executor => {
+		const handlers = this.registered[event] || [];
+		// Sort the handlers by priority
+		const sorted = handlers.sort((a, b) => a.priority < b.priority ? 0 : 1);
+		sorted.forEach(async executor => {
 			executor.owner.prototype[executor.handler.name](data);
 		});
 	}
