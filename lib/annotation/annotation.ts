@@ -95,7 +95,7 @@ export function EventController(injects?: boolean) {
 					Reflect.defineMetadata(EVENT_PRIORITY_METADATA_KEY, decorator.priority, target);
 				}
 			}
-			HANDLERS.push(target);
 		}
+		HANDLERS.push(target);
 	}
 }

@@ -17,7 +17,8 @@ class EventTest {
 		console.log(`Got a really cool event! ${data}`);
 	}
 
-	@Event("cool_event", EventPriority.FIRST)
+	@Event("cool_event")
+	@Priority(EventPriority.FIRST)
 	public async anotherTest(data: string) {
 		console.log(`I'm first! ${data}`);
 	}
