@@ -3,9 +3,10 @@ import { EventDispatch } from ".";
 
 let dispatch: EventDispatch = null;
 
-export function getDispatcher(): EventDispatch {
+export async function getDispatcher(): Promise<EventDispatch> {
 	if (!dispatch) {
 		dispatch = new EventDispatch();
+		await dispatch.setup();
 	}
 	return dispatch;
 }

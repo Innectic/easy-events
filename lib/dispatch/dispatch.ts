@@ -31,6 +31,7 @@ export class EventDispatch {
 				this.registered[event.name] = current;
 			}
 		}
+		this.isSetup = true;
 	}
 
 	public async emit(event: string, data: any) {
