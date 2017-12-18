@@ -1,6 +1,6 @@
 
-import { HANDLERS } from "./registry";
-import { HANDLED_EVENT_METADATA_KEY } from "./annotation";
+import { HANDLERS } from "../registry";
+import { HANDLED_EVENT_METADATA_KEY } from "../annotation";
 
 interface RegisteredHandlers {
 	[event: string]: {
