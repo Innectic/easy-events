@@ -34,7 +34,7 @@ export class EventDispatch {
 			return;
 		}
 		handlers.forEach(async executor => {
-			(<any> executor.owner.prototype)[executor.handler.name](data);
+			executor.owner.prototype[executor.handler.name](data);
 		});
 	}
 }
