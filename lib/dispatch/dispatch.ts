@@ -12,9 +12,9 @@ interface RegisteredHandlers {
 
 export class EventDispatch {
 	private registered: RegisteredHandlers = {};
-	private isSetup: boolean = false;
+	private isSetup = false;
 
-	public async setup(handlers: any[] = HANDLERS) {
+	public async setup(handlers: any[]) {
 		if (this.isSetup) {
 			console.error("[Dispatcher] Cannot setup a setup dispatcher.");
 			return;
